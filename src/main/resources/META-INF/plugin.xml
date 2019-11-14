@@ -1,0 +1,35 @@
+<idea-plugin>
+    <id>com.winning.pub</id>
+    <name>Winning TFS Integration</name>
+    <version>1.0</version>
+    <vendor email="ettingshausen@outlook.com" url="http://www.winning.com.cn">Winning Health Technology Group</vendor>
+    <description>
+        <![CDATA[
+      <a href="http://msdn.microsoft.com/en-us/vstudio/ff637362.aspx">Team Foundation Server</a> provides
+       source code management (either via Team Foundation Version Control or Git), reporting, requirements management, project management
+      (for both agile software development and waterfall teams), automated builds, lab management, testing and release management capabilities.
+      This plugin provides checkin policy integration with the Team Foundation Server.
+      The following policies are available:
+      <ul>
+      <li>Checkin comment policy</li>
+      <li>Work items policy</li>
+      <li>Ignore Winning Health Copyright policy</li>
+      </ul>
+      ]]>
+    </description>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="173.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>TFS</depends> <!-- we need a dependency on TFS integration plugin-->
+    <depends>com.intellij.modules.lang</depends>
+    <category>VCS Integration</category>
+
+    <extensions defaultExtensionNs="TFS">
+        <checkinPolicy implementation="winning.CheckinCommentPolicy"/>
+        <checkinPolicy implementation="winning.CopyrightPolicy"/>
+        <checkinPolicy implementation="winning.WorkItemsPolicy"/>
+    </extensions>
+
+
+</idea-plugin>
